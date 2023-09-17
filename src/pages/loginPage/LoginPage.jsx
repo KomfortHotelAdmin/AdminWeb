@@ -16,14 +16,11 @@ import { useUser } from "../../context/auth/context";
 import { Loader } from "../../components/loader/Loader";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
-import {
-  notifyErrorLogin,
-  notifyFulfilledLogin,
-} from "../../components/Toasters/toasters";
+import { notifyErrorLogin } from "../../components/Toasters/toasters";
 
 const initialValues = {
-  email: "komfortadmin991@mail.com",
-  password: "12345678",
+  email: "",
+  password: "",
 };
 
 const LoginPage = () => {
