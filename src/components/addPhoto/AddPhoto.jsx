@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Wrap } from "./AddPhoto.styled";
 
-const base_url = "http://localhost:3000/";
+const base_url = "https://komfort-hotel-admin-backend.onrender.com/";
 
 const AddPhoto = ({ setEventPhoto, eventPhoto }) => {
   const [selectedFile, setSelectedFile] = useState(null);
