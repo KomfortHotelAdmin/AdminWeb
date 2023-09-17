@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { deleteEvents, getEvents, updateEvents } from "../../services/event";
-import { EventCard } from "../../components/eventCard";
+import { EventCard } from "../../components/EventCard";
 import { CardListWrap, EventWrap } from "./MainPage.styled";
 import CreateEventForm from "../../components/CreateEvents/CreateEvent";
 import UpdateEventForm from "../../components/UpdateEvent/UpdateEvent";
