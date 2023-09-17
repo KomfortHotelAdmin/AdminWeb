@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { getEventsById } from "../../services/event";
 import AddPhoto from "../addPhoto/AddPhoto";
+import { notifyUpdateEvent } from "../Toasters/toasters";
 
 const UpdateEventForm = ({
   updateCard,
@@ -48,6 +49,7 @@ const UpdateEventForm = ({
         resetForm();
         setEventPhoto(null);
         toggleUpdateModal();
+        notifyUpdateEvent();
       }
     } catch (error) {
       console.log(error);
@@ -66,7 +68,6 @@ const UpdateEventForm = ({
           <EventFormInfo>
             <EventFormList>
               <EventFormItem>
-              
                 <Field
                   as="textarea"
                   type="text"

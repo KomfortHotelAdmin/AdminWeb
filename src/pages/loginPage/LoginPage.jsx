@@ -15,10 +15,15 @@ import { logIn } from "../../services/auth";
 import { useUser } from "../../context/auth/context";
 import { Loader } from "../../components/loader/Loader";
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import {
+  notifyErrorLogin,
+  notifyFulfilledLogin,
+} from "../../components/Toasters/toasters";
 
 const initialValues = {
-  email: "",
-  password: "",
+  email: "komfortadmin991@mail.com",
+  password: "12345678",
 };
 
 const LoginPage = () => {
@@ -36,10 +41,12 @@ const LoginPage = () => {
       const data = await logIn(values);
       if (data?.token) {
         context.logIn();
+      } else {
+        throw Error;
       }
       resetForm();
     } catch (error) {
-      console.log(error);
+      notifyErrorLogin();
     } finally {
       toggleLoader();
     }
@@ -103,6 +110,7 @@ const LoginPage = () => {
         </Formik>
       </FormikWrap>
       {isLoader && <Loader />}
+      <Toaster />
     </>
   );
 };

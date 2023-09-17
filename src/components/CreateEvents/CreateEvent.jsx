@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { addEvents } from "../../services/event";
 import AddPhoto from "../addPhoto/AddPhoto";
+import { notifyCreacteNewEvent } from "../Toasters/toasters";
 
 const initialValues = {
   text: "",
@@ -35,6 +36,7 @@ const CreateEventForm = ({ getData, toggleModal }) => {
       resetForm();
       setEventPhoto(null);
       toggleModal();
+      notifyCreacteNewEvent();
     } catch (error) {
       console.log(error);
     }

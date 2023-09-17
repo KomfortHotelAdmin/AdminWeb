@@ -6,6 +6,11 @@ import CreateEventForm from "../../components/CreateEvents/CreateEvent";
 import UpdateEventForm from "../../components/UpdateEvent/UpdateEvent";
 import { logOut } from "../../services/auth";
 import { useUser } from "../../context/auth/context";
+import { Toaster } from "react-hot-toast";
+import {
+  notifyDeleteEvent,
+  notifyFulfilledLogin,
+} from "../../components/Toasters/toasters";
 
 const initialStateCard = {
   id: "",
@@ -29,13 +34,16 @@ const MainPage = () => {
 
   useEffect(() => {
     getData();
+    notifyFulfilledLogin();
   }, []);
 
   const deleteCard = async (id) => {
     const isDelete = await deleteEvents(id);
 
-    isDelete.status === 200 &&
+    if (isDelete.status === 200) {
       setData((prevState) => prevState.filter((item) => item.id !== id));
+      notifyDeleteEvent();
+    }
   };
 
   const updateCard = async (id, formData) => {
@@ -65,6 +73,7 @@ const MainPage = () => {
 
   return (
     <>
+      <Toaster />
       <button type="button" onClick={onLogout}>
         LogOut
       </button>
